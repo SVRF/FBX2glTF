@@ -17,6 +17,8 @@
 #include "FBX2glTF.h"
 #include "FbxLayerElementAccess.hpp"
 
+extern bool svrfStripBlendshapePrefix;
+
 /**
  * At the FBX level, each Mesh can have a set of FbxBlendShape deformers; organisational units that contain no data
  * of their own. The actual deformation is determined by one or more FbxBlendShapeChannels, whose influences are all

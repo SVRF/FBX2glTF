@@ -49,6 +49,14 @@ std::vector<FbxBlendShapesAccess::BlendChannel> FbxBlendShapesAccess::extractCha
                 const double *fullWeights = fbxChannel->GetTargetShapeFullWeights();
                 std::string name = std::string(fbxChannel->GetName());
 
+                // Strip prefix from blendshape channel names
+                if (svrfStripBlendshapePrefix) {
+                  std::size_t found = name.rfind(".");
+                  if (found != std::string::npos) {
+                    name.replace(0, found + 1, "");
+                  }
+                }
+
                 if (verboseOutput) {
                     fmt::printf("\rblendshape channel: %s\n", name);
                 }

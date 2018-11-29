@@ -29,6 +29,7 @@
 #include "gltf/Raw2Gltf.hpp"
 
 bool verboseOutput = false;
+bool svrfStripBlendshapePrefix = false;
 
 int main(int argc, char *argv[])
 {
@@ -106,6 +107,9 @@ int main(int argc, char *argv[])
                (
                    "k,keep-attribute", "Used repeatedly to build a limiting set of vertex attributes to keep.",
                    cxxopts::value<std::vector<std::string>>())
+               (
+                   "svrf-strip-blendshape-name-prefix", "SVRF-specific, strips the prefix (from start to the last '.') from blendshape names when assigning them to accessor names",
+                   cxxopts::value<bool>(svrfStripBlendshapePrefix))
                ("v,verbose", "Enable verbose output.")
                ("h,help", "Show this help.")
                ("V,version", "Display the current program version.");

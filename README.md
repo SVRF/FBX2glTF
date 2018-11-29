@@ -125,6 +125,18 @@ accept its license agreement.
 **At present, only version 2018.1.1 of the FBX SDK is supported**. The
 build system will not successfully locate any other version.
 
+### Docker
+
+You can use Docker to build the npm package:
+
+```
+  > ./docker-build-npm.sh
+  ...
+  built .../artifacts/fbxsdk-X.X.X.tgz
+```
+
+Then the tar ball is in the `./artifacts` folder.
+
 ### Linux and MacOS X
 Compilation on Unix machines should be as simple as:
 

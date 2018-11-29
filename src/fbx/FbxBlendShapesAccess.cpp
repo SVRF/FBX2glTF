@@ -40,7 +40,6 @@ std::vector<FbxBlendShapesAccess::BlendChannel> FbxBlendShapesAccess::extractCha
     std::vector<BlendChannel> channels;
     for (int                       shapeIx = 0; shapeIx < mesh->GetDeformerCount(FbxDeformer::eBlendShape); shapeIx++) {
         auto *fbxBlendShape = static_cast<FbxBlendShape *>(mesh->GetDeformer(shapeIx, FbxDeformer::eBlendShape));
-
         for (int channelIx = 0; channelIx < fbxBlendShape->GetBlendShapeChannelCount(); ++channelIx) {
             FbxBlendShapeChannel *fbxChannel = fbxBlendShape->GetBlendShapeChannel(channelIx);
 
@@ -49,11 +48,12 @@ std::vector<FbxBlendShapesAccess::BlendChannel> FbxBlendShapesAccess::extractCha
                 const double *fullWeights = fbxChannel->GetTargetShapeFullWeights();
                 std::string name = std::string(fbxChannel->GetName());
 
-                // Strip prefix from blendshape channel names
+                // Strip deformer name prefix from blendshape channel names
                 if (svrfStripBlendshapePrefix) {
-                  std::size_t found = name.rfind(".");
+                  std::string deformerName = std::string(fbxBlendShape->GetName());
+                  std::size_t found = name.find(deformerName + ".");
                   if (found != std::string::npos) {
-                    name.replace(0, found + 1, "");
+                    name.replace(0, deformerName.length() + 1, "");
                   }
                 }
 

@@ -49,6 +49,7 @@ function convert(srcFile, destFile, opts = []) {
 
       let args = opts.slice(0);
       args.push('--input', srcPath, '--output', destPath);
+      console.log(`spawning ${tool} ${args.join(' ')}`);
       let child = childProcess.spawn(tool, args);
 
       let output = '';

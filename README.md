@@ -55,6 +55,10 @@ Usage:
                                 (never|broken|missing|always).
   -k, --keep-attribute arg      Used repeatedly to build a limiting set of
                                 vertex attributes to keep.
+      --svrf-strip-blendshape-name-prefix
+                                SVRF-specific, strips the prefix (from start
+                                to the last '.') from blendshape names when
+                                assigning them to accessor names
   -v, --verbose                 Enable verbose output.
   -h, --help                    Show this help.
   -V, --version                 Display the current program version.
@@ -78,7 +82,7 @@ Some of these switches are not obvious:
 - `--compute-normals` controls when automatic vertex normals should be computed
   from the mesh. By default, empty normals (which are forbidden by glTF) are
   replaced. A choice of 'missing' implies 'broken', but additionally creates
-  normals for models that lack them completely. 
+  normals for models that lack them completely.
 - `--no-flip-v` will actively disable v coordinat flipping. This can be useful
   if your textures are pre-flipped, or if for some other reason you were already
   in a glTF-centric texture coordinate system.
